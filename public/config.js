@@ -25,7 +25,7 @@ window.__RUNTIME_CONFIG__ = {
   "VITE_TWITTER_URL": "https://x.com/CoinAppWallet",
   "VITE_SEO_SITE_NAME": "DEX",
   "VITE_SEO_SITE_DESCRIPTION": "A powerful decentralized exchange",
-  "VITE_SEO_SITE_URL": "https://dex.orderly.network/dex-8284/",
+  "VITE_SEO_SITE_URL": "https://dex.coin.space",
   "VITE_SEO_SITE_LANGUAGE": "en",
   "VITE_SEO_SITE_LOCALE": "en_US",
   "VITE_SEO_TWITTER_HANDLE": "@CoinAppWallet",
