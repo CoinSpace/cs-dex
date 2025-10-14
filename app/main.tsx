@@ -22,15 +22,15 @@ const PortfolioHistory = lazy(() => import('./pages/portfolio/History'));
 const PortfolioSetting = lazy(() => import('./pages/portfolio/Setting'));
 const MarketsLayout = lazy(() => import('./pages/markets/Layout'));
 const MarketsIndex = lazy(() => import('./pages/markets/Index'));
-const LeaderboardLayout = lazy(() => import('./pages/leaderboard/Layout'));
-const LeaderboardIndex = lazy(() => import('./pages/leaderboard/Index'));
-const RewardsLayout = lazy(() => import('./pages/rewards/Layout'));
-const RewardsIndex = lazy(() => import('./pages/rewards/Index'));
-const RewardsAffiliate = lazy(() => import('./pages/rewards/Affiliate'));
-const VaultsLayout = lazy(() => import('./pages/vaults/Layout'));
-const VaultsIndex = lazy(() => import('./pages/vaults/Index'));
-const SwapLayout = lazy(() => import('./pages/swap/Layout'));
-const SwapIndex = lazy(() => import('./pages/swap/Index'));
+// const LeaderboardLayout = lazy(() => import('./pages/leaderboard/Layout'));
+// const LeaderboardIndex = lazy(() => import('./pages/leaderboard/Index'));
+// const RewardsLayout = lazy(() => import('./pages/rewards/Layout'));
+// const RewardsIndex = lazy(() => import('./pages/rewards/Index'));
+// const RewardsAffiliate = lazy(() => import('./pages/rewards/Affiliate'));
+// const VaultsLayout = lazy(() => import('./pages/vaults/Layout'));
+// const VaultsIndex = lazy(() => import('./pages/vaults/Index'));
+// const SwapLayout = lazy(() => import('./pages/swap/Layout'));
+// const SwapIndex = lazy(() => import('./pages/swap/Index'));
 
 async function loadRuntimeConfig() {
   return new Promise<void>((resolve) => {
@@ -85,35 +85,35 @@ const router = createBrowserRouter([
           { index: true, element: <MarketsIndex /> },
         ],
       },
-      {
-        path: 'leaderboard',
-        element: <LeaderboardLayout />,
-        children: [
-          { index: true, element: <LeaderboardIndex /> },
-        ],
-      },
-      {
-        path: 'rewards',
-        element: <RewardsLayout />,
-        children: [
-          { index: true, element: <RewardsIndex /> },
-          { path: 'affiliate', element: <RewardsAffiliate /> },
-        ],
-      },
-      {
-        path: 'vaults',
-        element: <VaultsLayout />,
-        children: [
-          { index: true, element: <VaultsIndex /> },
-        ],
-      },
-      {
-        path: 'swap',
-        element: <SwapLayout />,
-        children: [
-          { index: true, element: <SwapIndex /> },
-        ],
-      },
+      // {
+      //   path: 'leaderboard',
+      //   element: <LeaderboardLayout />,
+      //   children: [
+      //     { index: true, element: <LeaderboardIndex /> },
+      //   ],
+      // },
+      // {
+      //   path: 'rewards',
+      //   element: <RewardsLayout />,
+      //   children: [
+      //     { index: true, element: <RewardsIndex /> },
+      //     { path: 'affiliate', element: <RewardsAffiliate /> },
+      //   ],
+      // },
+      // {
+      //   path: 'vaults',
+      //   element: <VaultsLayout />,
+      //   children: [
+      //     { index: true, element: <VaultsIndex /> },
+      //   ],
+      // },
+      // {
+      //   path: 'swap',
+      //   element: <SwapLayout />,
+      //   children: [
+      //     { index: true, element: <SwapIndex /> },
+      //   ],
+      // },
     ],
   },
 ], { basename: basePath });
