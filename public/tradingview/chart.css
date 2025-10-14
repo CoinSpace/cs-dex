@@ -74,6 +74,6 @@ div[data-section-name='extendLeftTradingLine'] {
 
 
 .theme-dark:root {
-    --tv-color-platform-background: #16141c;
-    --tv-color-pane-background: #16141c;
+    --tv-color-platform-background: #171717;
+    --tv-color-pane-background: #171717;
 }

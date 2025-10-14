@@ -63,7 +63,7 @@ const LeftNavSheet = modal.create<LeftNavUIProps>((props) => {
           <div className="oui-mt-[6px] oui-flex oui-h-[44px] oui-items-center">
             {
               getRuntimeConfigBoolean('VITE_HAS_PRIMARY_LOGO')
-                ? <img src={withBasePath("/logo.webp")} alt="logo" className="oui-h-[32px]" />
+                ? <img src={withBasePath("/logo.svg")} alt="logo" className="oui-h-[32px]" />
                 : <h1 className="oui-text-base-contrast-80 oui-font-bold">{getRuntimeConfig('VITE_ORDERLY_BROKER_NAME')}</h1>
             }
           </div>
