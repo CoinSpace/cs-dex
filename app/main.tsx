@@ -32,6 +32,8 @@ const MarketsIndex = lazy(() => import('./pages/markets/Index'));
 // const SwapLayout = lazy(() => import('./pages/swap/Layout'));
 // const SwapIndex = lazy(() => import('./pages/swap/Index'));
 
+const NotFound = lazy(() => import('./pages/NotFound'));
+
 async function loadRuntimeConfig() {
   return new Promise<void>((resolve) => {
     const script = document.createElement('script');
@@ -54,6 +56,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <NotFound />,
     children: [
       { index: true, element: <IndexPage /> },
       {
