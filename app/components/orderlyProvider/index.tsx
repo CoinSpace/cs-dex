@@ -64,15 +64,15 @@ const getDefaultLanguage = (): LocaleCode => {
 	return (availableLanguages[0] || 'en') as LocaleCode;
 };
 
-const PrivyConnector = lazy(() => import("@/components/orderlyProvider/privyConnector"));
+// const PrivyConnector = lazy(() => import("@/components/orderlyProvider/privyConnector"));
 const WalletConnector = lazy(() => import("@/components/orderlyProvider/walletConnector"));
 
 const OrderlyProvider = (props: { children: ReactNode }) => {
 	const config = useOrderlyConfig();
 	const networkId = getNetworkId();
 	
-	const privyAppId = getRuntimeConfig('VITE_PRIVY_APP_ID');
-	const usePrivy = !!privyAppId;
+	// const privyAppId = getRuntimeConfig('VITE_PRIVY_APP_ID');
+	// const usePrivy = !!privyAppId;
 
 	const parseChainIds = (envVar: string | undefined): Array<{id: number}> | undefined => {
 		if (!envVar) return undefined;
@@ -168,9 +168,10 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
 		</OrderlyAppProvider>
 	);
 
-	const walletConnector = usePrivy
-		? <PrivyConnector networkId={networkId}>{appProvider}</PrivyConnector>
-		: <WalletConnector networkId={networkId}>{appProvider}</WalletConnector>;
+	const walletConnector = <WalletConnector networkId={networkId}>{appProvider}</WalletConnector>;
+	// const walletConnector = usePrivy
+	// 	? <PrivyConnector networkId={networkId}>{appProvider}</PrivyConnector>
+	// 	: <WalletConnector networkId={networkId}>{appProvider}</WalletConnector>;
 
 	return (
 		<LocaleProvider
