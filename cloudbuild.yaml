@@ -1,0 +1,72 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/gsutil'
+  id: 'restore cache'
+  entrypoint: 'sh'
+  args:
+    - '-c'
+    - |
+      HASH=$(sha256sum yarn.lock | cut -d' ' -f1)
+      CACHE_PATH="gs://coinspace-production-cs-dex/${_NAMESPACE}/cache/node_modules_$${HASH}.tar.gz"
+      if gsutil -q stat "$$CACHE_PATH"; then
+        echo "✅ Cache found: $$CACHE_PATH"
+        gsutil cp "$$CACHE_PATH" node_modules.tar.gz
+        tar -xzf node_modules.tar.gz node_modules
+        rm node_modules.tar.gz
+      else
+        echo "No cache found for hash: $$HASH"
+      fi
+
+- name: 'node:22.20.0'
+  id: 'build web'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      yarn install --frozen-lockfile --prefer-offline \
+      && yarn build:spa
+
+- name: 'gcr.io/cloud-builders/gsutil'
+  id: 'save cache'
+  entrypoint: 'sh'
+  args:
+    - '-c'
+    - |
+      HASH=$(sha256sum yarn.lock | cut -d' ' -f1)
+      CACHE_PATH="gs://coinspace-production-cs-dex/${_NAMESPACE}/cache/node_modules_$${HASH}.tar.gz"
+      if ! gsutil -q stat "$$CACHE_PATH"; then
+        echo "✅ Saving cache: $$CACHE_PATH"
+        tar -czf node_modules.tar.gz node_modules \
+        && gsutil cp node_modules.tar.gz "$$CACHE_PATH" \
+        && rm node_modules.tar.gz
+      else
+        echo "Cache exists: $$HASH"
+      fi
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build server'
+  entrypoint: 'sh'
+  args:
+    - '-c'
+    - |
+      docker build --tag "gcr.io/$PROJECT_ID/${_NAMESPACE}/${_APP}:latest" . \
+      && docker push "gcr.io/$PROJECT_ID/${_NAMESPACE}/${_APP}:latest"
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: 'deploy'
+  args: ['rollout', 'restart', 'deploy', '-l', 'app=${_APP}', '--namespace', '${_NAMESPACE}']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'purge cdn'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    if [[ -n "${_CDN_URL_MAP_NAME}" ]]; then
+      gcloud compute url-maps invalidate-cdn-cache ${_CDN_URL_MAP_NAME} --host ${_CDN_HOST} --path "/*" --async
+    fi
+
+timeout: 1800s
