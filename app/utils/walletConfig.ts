@@ -20,7 +20,7 @@ import type { NetworkId } from "@orderly.network/types";
 import injectedOnboard from "@web3-onboard/injected-wallets";
 import { getRuntimeConfig } from "./runtime-config";
 import walletConnectOnboard from "@web3-onboard/walletconnect";
-import binanceWallet from "@binance/w3w-blocknative-connector";
+import { withBasePath } from "@/utils/base-path";
 
 export const getEvmConnectors = (): CreateConnectorFn[] => {
   const walletConnectProjectId = getRuntimeConfig(
@@ -97,16 +97,17 @@ export const getOnboardEvmWallets = () => {
     return [];
   }
 
+  const chainIds = getRuntimeConfig('VITE_ORDERLY_MAINNET_CHAINS')?.split(',').map((id) => parseInt(id.trim()));
   return [
-    injectedOnboard(),
-    binanceWallet({ options: { lng: "en" } }),
     walletConnectOnboard({
       projectId: walletConnectProjectId,
       qrModalOptions: {
         themeMode: "dark",
       },
+      optionalChains: chainIds,
       dappUrl: window.location.origin,
     }),
+    injectedOnboard(),
   ];
 };
 
@@ -118,6 +119,7 @@ export const getEvmInitialConfig = () => {
         options: {
           wallets,
           appMetadata: {
+            icon: withBasePath("/logo.svg"),
             name: getRuntimeConfig("VITE_ORDERLY_BROKER_NAME"),
             description: getRuntimeConfig("VITE_ORDERLY_BROKER_NAME"),
           },
