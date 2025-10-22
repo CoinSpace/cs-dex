@@ -15,6 +15,9 @@ export const BASE_PATH = getRuntimeConfig("VITE_BASE_URL") || "/";
 export function withBasePath(path: string): string {
   // If the path already starts with the base path or is an absolute URL, return it as is
   if (path.startsWith(BASE_PATH) || path.match(/^(https?:)?\/\//)) {
+    if (path.match(/\.(?:jpg|jpeg|gif|png|webp|ico|svg|svgz|mp4|ogg|ogv|webm|json|js|css)/)) {
+      return path + `?ver=${(import.meta.env.VITE_COMMIT || '0').substring(0, 7)}`;
+    }
     return path;
   }
 

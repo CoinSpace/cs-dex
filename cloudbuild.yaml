@@ -25,6 +25,8 @@ steps:
     - |
       yarn install --frozen-lockfile --prefer-offline \
       && yarn build:spa
+  env:
+    - 'VITE_COMMIT=${COMMIT_SHA}'
 
 - name: 'gcr.io/cloud-builders/gsutil'
   id: 'save cache'
