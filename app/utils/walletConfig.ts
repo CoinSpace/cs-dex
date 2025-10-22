@@ -118,6 +118,10 @@ export const getEvmInitialConfig = () => {
     ? {
         options: {
           wallets,
+          connect: {
+            iDontHaveAWalletLink: 'https://coin.space',
+            removeWhereIsMyWalletWarning: true,
+          },
           appMetadata: {
             icon: withBasePath("/logo.svg"),
             name: getRuntimeConfig("VITE_ORDERLY_BROKER_NAME"),
