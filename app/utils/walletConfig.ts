@@ -126,6 +126,11 @@ export const getEvmInitialConfig = () => {
             icon: withBasePath("/logo.svg"),
             name: getRuntimeConfig("VITE_ORDERLY_BROKER_NAME"),
             description: getRuntimeConfig("VITE_ORDERLY_BROKER_NAME"),
+            agreement: {
+              version: '1.0.0',
+              termsUrl: 'https://coin.space/terms-of-service/',
+              privacyUrl: 'https://coin.space/privacy-policy/',
+            },
           },
         },
       }
