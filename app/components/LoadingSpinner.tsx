@@ -16,7 +16,7 @@ export const LoadingSpinner = () => (
           height: 50px;
           border: 4px solid rgba(0, 0, 0, 0.1);
           border-radius: 50%;
-          border-left-color: #09f;
+          border-left-color: #68c481;
           animation: spin 1s linear infinite;
         }
         @keyframes spin {

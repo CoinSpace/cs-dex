@@ -11,8 +11,21 @@ span {
     letter-spacing: 0.03em;
 }
 .theme-dark:root {
-    --tv-color-pane-background: #131519;
-    --tv-color-platform-background: #131519;
+    --tv-spinner-color: #68c481;
+	--tv-color-pane-background: #171717;
+    --tv-color-platform-background: #171717;
+	--tv-color-toolbar-button-background-hover: #303030;
+	--tv-color-toolbar-button-text-active: #68c481;
+	--tv-color-toolbar-button-text-active-hover: #68c481;
+	--tv-color-item-active-text: #fff;
+	--tv-color-toolbar-toggle-button-background-active: #68c481;
+	--tv-color-toolbar-toggle-button-background-active-hover: #68c481;
+	--tv-color-popup-background: #262626;
+	--tv-color-popup-element-background-hover: #303030;
+	--tv-color-popup-element-text-active: #fff;
+	--tv-color-popup-element-background-active: #68c481;
+	--tv-color-popup-element-toolbox-text-active-hover: #fff;
+	--tv-color-popup-element-toolbox-background-active-hover: #01842e;
     --up: #008676;
    --down: #D92D6B;
     --white-1: rgba(255, 255, 255, 0.98);
@@ -72,8 +85,6 @@ div[data-section-name='extendLeftTradingLine'] {
     display: flex !important;
 }
 
-
-.theme-dark:root {
-    --tv-color-platform-background: #171717;
-    --tv-color-pane-background: #171717;
+html.theme-dark .dialog-aRAWUDhF {
+    background-color: #262626;
 }
