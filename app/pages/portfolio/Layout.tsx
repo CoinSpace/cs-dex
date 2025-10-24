@@ -5,7 +5,7 @@ import { useNav } from "@/hooks/useNav";
 
 export default function PortfolioLayout() {
   const location = useLocation();
-  const pathname = location.pathname;
+  const pathname = location.pathname.replace(/\/$/, "");
 
   const { onRouteChange } = useNav();
   const config = useOrderlyConfig();
