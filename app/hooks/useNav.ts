@@ -25,8 +25,8 @@ export function useNav() {
 
       const routeMap = {
         //   "/portfolio": "/portfolio",
-        "/portfolio/feeTier": "/portfolio/fee",
-        "/portfolio/apiKey": "/portfolio/api-key",
+        // "/portfolio/feeTier": "/portfolio/fee",
+        // "/portfolio/apiKey": "/portfolio/api",
         //   "/portfolio/positions": "/portfolio/positions",
         //   "/portfolio/orders": "/portfolio/orders",
         //   "/portfolio/setting": "/portfolio/setting",
