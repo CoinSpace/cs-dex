@@ -10,3 +10,15 @@
 .oui-box.oui-flex.oui-flex-nowrap > div:nth-child(2).oui-box.oui-flex.oui-justify-start.oui-flex-nowrap.oui-relative {
   display: none;
 }
+
+/* fix portfolio mobile */
+.oui-flex.oui-h-\[44px\].oui-w-full.oui-items-center.oui-justify-between.oui-rounded-\[10px\].oui-px-3.oui-py-\[10px\].oui-bg-\[linear-gradient\(15deg\,\#283BEE_-11\%\,transparent_30\%\,transparent_77\%\,\#A53411_100\%\)\],
+.oui-flex.oui-h-\[44px\].oui-w-full.oui-items-center.oui-justify-center.oui-rounded-\[10px\].oui-px-3.oui-py-\[10px\].oui-bg-\[linear-gradient\(15deg\,\#27FDFE_0\%\,transparent_30\%\)\],
+.oui-flex.oui-h-\[44px\].oui-w-full.oui-items-center.oui-justify-center.oui-rounded-\[10px\].oui-px-3.oui-py-\[10px\].oui-bg-\[linear-gradient\(15deg\,\#D25F00_0\%\,transparent_30\%\)\],
+.oui-flex.oui-h-\[44px\].oui-w-full.oui-items-center.oui-justify-center.oui-rounded-\[10px\].oui-px-3.oui-py-\[10px\].oui-bg-\[linear-gradient\(15deg\,\#335FFC_0\%\,transparent_30\%\)\],
+.oui-box.oui-relative.oui-h-\[112px\].oui-border-\[rgba\(var\(--oui-gradient-primary-start\)\/0\.36\)\].oui-bg-gradient-to-r.oui-from-\[rgba\(var\(--oui-gradient-primary-end\)\/0\.12\)\].oui-to-\[rgba\(var\(--oui-gradient-primary-start\)\/0\.12\)\] {
+  display: none;
+}
+.oui-box.oui-p-4.oui-size-width.oui-size-height.oui-flex.oui-flex-col.oui-justify-start.oui-flex-nowrap.oui-relative.oui-items-start.oui-overflow-hidden.oui-rounded-2xl.oui-bg-\[\#283BEE\] {
+  background-color: rgb(var(--oui-color-base-9));
+}
