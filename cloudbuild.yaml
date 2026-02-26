@@ -7,7 +7,7 @@ steps:
     - '-c'
     - |
       HASH=$(sha256sum yarn.lock | cut -d' ' -f1)
-      CACHE_PATH="gs://coinspace-production-cs-dex/${_NAMESPACE}/cache/node_modules_$${HASH}.tar.gz"
+      CACHE_PATH="gs://coinspace-production-cs-dex-us/${_NAMESPACE}/cache/node_modules_$${HASH}.tar.gz"
       if gsutil -q stat "$$CACHE_PATH"; then
         echo "✅ Cache found: $$CACHE_PATH"
         gsutil cp "$$CACHE_PATH" node_modules.tar.gz
@@ -35,7 +35,7 @@ steps:
     - '-c'
     - |
       HASH=$(sha256sum yarn.lock | cut -d' ' -f1)
-      CACHE_PATH="gs://coinspace-production-cs-dex/${_NAMESPACE}/cache/node_modules_$${HASH}.tar.gz"
+      CACHE_PATH="gs://coinspace-production-cs-dex-us/${_NAMESPACE}/cache/node_modules_$${HASH}.tar.gz"
       if ! gsutil -q stat "$$CACHE_PATH"; then
         echo "✅ Saving cache: $$CACHE_PATH"
         tar -czf node_modules.tar.gz node_modules \
